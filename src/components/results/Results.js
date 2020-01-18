@@ -1,10 +1,13 @@
 import React, { Fragment, Component } from 'react';
+import CssBaseLine from '@material-ui/core/CssBaseLine';
 import { connect } from 'react-redux';
+import AppBar from '../appBar/AppBar';
 
 function Page(props){
     return (
         <Fragment>
-            Results
+            <CssBaseLine />
+            <AppBar />
         </Fragment>
     );
 }
