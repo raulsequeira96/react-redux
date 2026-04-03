@@ -33,6 +33,13 @@
   margin-bottom: 0.35rem;
 }
 
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+}
+
 .hero h1 {
   font-family: 'DM Serif Display', Georgia, serif;
   line-height: 1;
@@ -159,6 +166,17 @@ textarea {
 
 .button-primary:hover {
   background: #c2410c;
+}
+
+.button-language {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+  min-width: 58px;
+}
+
+.button-language:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .button-danger {

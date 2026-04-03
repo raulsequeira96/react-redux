@@ -41,6 +41,159 @@ const priorityClass = {
   low: 'priority low',
 };
 
+const messages = {
+  en: {
+    languageButton: 'ES',
+    languageButtonA11y: 'Switch to Spanish',
+    kicker: 'React Redux Learning Studio',
+    title: 'From Dispatch to UI, End to End',
+    intro:
+      'This board shows real Redux Toolkit patterns: normalized global state, memoized selectors, async thunks with request states, and intentional UI updates.',
+    statsTotal: 'Total tasks',
+    statsInProgress: 'In progress',
+    statsDone: 'Done',
+    statsCompletion: 'Completion',
+    createTitle: 'Create Task (sync reducer)',
+    createNote: 'Dispatches taskAdded with a prepared payload.',
+    labelTitle: 'Title',
+    placeholderTitle: 'Add memoized selector examples',
+    labelDescription: 'Description',
+    placeholderDescription: 'What should be implemented?',
+    labelPriority: 'Priority',
+    labelAssignee: 'Assignee',
+    placeholderAssignee: 'Taylor',
+    labelTags: 'Tags (comma separated)',
+    placeholderTags: 'redux, selectors, ui',
+    actionAddTask: 'Add task',
+    actionLoadTemplates: 'Load async templates',
+    actionMarkAllDone: 'Mark all done',
+    actionClearCompleted: 'Clear completed',
+    actionResetFilters: 'Reset filters',
+    asyncState: 'Async state',
+    lastDeleted: 'Last deleted',
+    undo: 'Undo',
+    filtersTitle: 'Selectors + Filters',
+    filtersNote:
+      'Filters are global state. The board uses memoized selectors to avoid unnecessary recalculations.',
+    labelSearch: 'Search',
+    placeholderSearch: 'Search text, tag, assignee...',
+    labelStatus: 'Status',
+    labelTag: 'Tag',
+    labelSort: 'Sort',
+    all: 'All',
+    sortNewest: 'Newest',
+    sortOldest: 'Oldest',
+    sortPriority: 'Priority',
+    sortTitle: 'Title',
+    visibleCountStart: 'Showing',
+    visibleCountEnd: 'task(s) from global state.',
+    columnTodoLabel: 'To do',
+    columnTodoHelper: 'Ideas and queued tasks.',
+    columnDoingLabel: 'In progress',
+    columnDoingHelper: 'Current focus.',
+    columnDoneLabel: 'Done',
+    columnDoneHelper: 'Completed work.',
+    noDescription: 'No description.',
+    noTags: '#none',
+    back: 'Back',
+    next: 'Next',
+    toggleDone: 'Toggle done',
+    delete: 'Delete',
+    emptyColumn: 'No tasks in this column for current filters.',
+    statuses: {
+      todo: 'To do',
+      doing: 'In progress',
+      done: 'Done',
+    },
+    priorities: {
+      high: 'High',
+      medium: 'Medium',
+      low: 'Low',
+    },
+    requestStatus: {
+      idle: 'idle',
+      loading: 'loading',
+      succeeded: 'succeeded',
+      failed: 'failed',
+    },
+  },
+  es: {
+    languageButton: 'EN',
+    languageButtonA11y: 'Cambiar a ingles',
+    kicker: 'Laboratorio React Redux',
+    title: 'Del Dispatch a la UI, de punta a punta',
+    intro:
+      'Este tablero muestra patrones reales de Redux Toolkit: estado global normalizado, selectores memoizados, thunks async con estados de request y actualizaciones intencionales de UI.',
+    statsTotal: 'Total de tareas',
+    statsInProgress: 'En progreso',
+    statsDone: 'Completadas',
+    statsCompletion: 'Avance',
+    createTitle: 'Crear tarea (reducer sync)',
+    createNote: 'Dispara taskAdded con payload preparado.',
+    labelTitle: 'Titulo',
+    placeholderTitle: 'Agregar ejemplos de selectores memoizados',
+    labelDescription: 'Descripcion',
+    placeholderDescription: 'Que se debe implementar?',
+    labelPriority: 'Prioridad',
+    labelAssignee: 'Responsable',
+    placeholderAssignee: 'Taylor',
+    labelTags: 'Etiquetas (separadas por coma)',
+    placeholderTags: 'redux, selectores, ui',
+    actionAddTask: 'Agregar tarea',
+    actionLoadTemplates: 'Cargar plantillas async',
+    actionMarkAllDone: 'Marcar todo como hecho',
+    actionClearCompleted: 'Limpiar completadas',
+    actionResetFilters: 'Resetear filtros',
+    asyncState: 'Estado async',
+    lastDeleted: 'Ultima eliminada',
+    undo: 'Deshacer',
+    filtersTitle: 'Selectores + Filtros',
+    filtersNote:
+      'Los filtros viven en estado global. El tablero usa selectores memoizados para evitar recalculos innecesarios.',
+    labelSearch: 'Busqueda',
+    placeholderSearch: 'Buscar texto, etiqueta, responsable...',
+    labelStatus: 'Estado',
+    labelTag: 'Etiqueta',
+    labelSort: 'Orden',
+    all: 'Todos',
+    sortNewest: 'Mas nuevos',
+    sortOldest: 'Mas antiguos',
+    sortPriority: 'Prioridad',
+    sortTitle: 'Titulo',
+    visibleCountStart: 'Mostrando',
+    visibleCountEnd: 'tarea(s) del estado global.',
+    columnTodoLabel: 'Por hacer',
+    columnTodoHelper: 'Ideas y tareas en cola.',
+    columnDoingLabel: 'En progreso',
+    columnDoingHelper: 'Foco actual.',
+    columnDoneLabel: 'Hecho',
+    columnDoneHelper: 'Trabajo completado.',
+    noDescription: 'Sin descripcion.',
+    noTags: '#ninguna',
+    back: 'Atras',
+    next: 'Siguiente',
+    toggleDone: 'Alternar hecho',
+    delete: 'Eliminar',
+    emptyColumn: 'No hay tareas en esta columna para los filtros actuales.',
+    statuses: {
+      todo: 'Por hacer',
+      doing: 'En progreso',
+      done: 'Hecho',
+    },
+    priorities: {
+      high: 'Alta',
+      medium: 'Media',
+      low: 'Baja',
+    },
+    requestStatus: {
+      idle: 'inactivo',
+      loading: 'cargando',
+      succeeded: 'ok',
+      failed: 'error',
+    },
+  },
+};
+
 function App() {
   const dispatch = useDispatch();
 
@@ -52,6 +205,8 @@ function App() {
   const lastDeleted = useSelector(selectLastDeleted);
   const tags = useSelector(selectAvailableTags);
   const assignees = useSelector(selectAvailableAssignees);
+  const [language, setLanguage] = useState('en');
+  const t = messages[language];
 
   const [form, setForm] = useState({
     title: '',
@@ -63,11 +218,11 @@ function App() {
 
   const columns = useMemo(
     () => [
-      { key: 'todo', label: 'To do', helper: 'Ideas and queued tasks.' },
-      { key: 'doing', label: 'In progress', helper: 'Current focus.' },
-      { key: 'done', label: 'Done', helper: 'Completed work.' },
+      { key: 'todo', label: t.columnTodoLabel, helper: t.columnTodoHelper },
+      { key: 'doing', label: t.columnDoingLabel, helper: t.columnDoingHelper },
+      { key: 'done', label: t.columnDoneLabel, helper: t.columnDoneHelper },
     ],
-    []
+    [t]
   );
 
   const updateForm = (event) => {
@@ -115,31 +270,42 @@ function App() {
     dispatch(loadDemoTasks());
   };
 
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === 'en' ? 'es' : 'en'));
+  };
+
   return (
     <div className="app-shell">
       <header className="hero">
-        <p className="kicker">React Redux Learning Studio</p>
-        <h1>From Dispatch to UI, End to End</h1>
-        <p>
-          This board shows real Redux Toolkit patterns: normalized global state, memoized selectors,
-          async thunks with request states, and intentional UI updates.
-        </p>
+        <div className="hero-top">
+          <p className="kicker">{t.kicker}</p>
+          <button
+            type="button"
+            className="button button-language"
+            onClick={toggleLanguage}
+            aria-label={t.languageButtonA11y}
+          >
+            {t.languageButton}
+          </button>
+        </div>
+        <h1>{t.title}</h1>
+        <p>{t.intro}</p>
 
         <div className="stats-grid">
           <article className="stat-card">
-            <p>Total tasks</p>
+            <p>{t.statsTotal}</p>
             <strong>{stats.total}</strong>
           </article>
           <article className="stat-card">
-            <p>In progress</p>
+            <p>{t.statsInProgress}</p>
             <strong>{stats.inProgress}</strong>
           </article>
           <article className="stat-card">
-            <p>Done</p>
+            <p>{t.statsDone}</p>
             <strong>{stats.done}</strong>
           </article>
           <article className="stat-card">
-            <p>Completion</p>
+            <p>{t.statsCompletion}</p>
             <strong>{stats.completionRate}%</strong>
           </article>
         </div>
@@ -147,140 +313,138 @@ function App() {
 
       <main className="layout">
         <section className="panel form-panel">
-          <h2>Create Task (sync reducer)</h2>
-          <p className="panel-note">Dispatches taskAdded with a prepared payload.</p>
+          <h2>{t.createTitle}</h2>
+          <p className="panel-note">{t.createNote}</p>
           <form onSubmit={handleCreateTask} className="task-form">
             <label>
-              Title
+              {t.labelTitle}
               <input
                 name="title"
                 value={form.title}
                 onChange={updateForm}
-                placeholder="Add memoized selector examples"
+                placeholder={t.placeholderTitle}
               />
             </label>
 
             <label>
-              Description
+              {t.labelDescription}
               <textarea
                 name="description"
                 value={form.description}
                 onChange={updateForm}
-                placeholder="What should be implemented?"
+                placeholder={t.placeholderDescription}
                 rows={3}
               />
             </label>
 
             <div className="inline-grid">
               <label>
-                Priority
+                {t.labelPriority}
                 <select name="priority" value={form.priority} onChange={updateForm}>
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
+                  <option value="high">{t.priorities.high}</option>
+                  <option value="medium">{t.priorities.medium}</option>
+                  <option value="low">{t.priorities.low}</option>
                 </select>
               </label>
 
               <label>
-                Assignee
+                {t.labelAssignee}
                 <input
                   name="assignee"
                   value={form.assignee}
                   onChange={updateForm}
-                  placeholder="Taylor"
+                  placeholder={t.placeholderAssignee}
                 />
               </label>
             </div>
 
             <label>
-              Tags (comma separated)
+              {t.labelTags}
               <input
                 name="tagsText"
                 value={form.tagsText}
                 onChange={updateForm}
-                placeholder="redux, selectors, ui"
+                placeholder={t.placeholderTags}
               />
             </label>
 
             <button type="submit" className="button button-primary">
-              Add task
+              {t.actionAddTask}
             </button>
           </form>
 
           <div className="action-row">
             <button type="button" className="button" onClick={handleLoadAsyncData}>
-              Load async templates
+              {t.actionLoadTemplates}
             </button>
             <button type="button" className="button" onClick={() => dispatch(allMarkedDone())}>
-              Mark all done
+              {t.actionMarkAllDone}
             </button>
             <button type="button" className="button" onClick={() => dispatch(completedCleared())}>
-              Clear completed
+              {t.actionClearCompleted}
             </button>
             <button type="button" className="button" onClick={() => dispatch(filtersReset())}>
-              Reset filters
+              {t.actionResetFilters}
             </button>
           </div>
 
           <div className="request-box" aria-live="polite">
-            <strong>Async state:</strong> {request.status}
+            <strong>{t.asyncState}:</strong> {t.requestStatus[request.status] || request.status}
             {request.error ? <p className="error">{request.error}</p> : null}
           </div>
 
           {lastDeleted ? (
             <div className="undo-box">
-              Last deleted: <strong>{lastDeleted.title}</strong>
+              {t.lastDeleted}: <strong>{lastDeleted.title}</strong>
               <button
                 type="button"
                 className="button button-inline"
                 onClick={() => dispatch(lastDeletedRestored())}
               >
-                Undo
+                {t.undo}
               </button>
             </div>
           ) : null}
         </section>
 
         <section className="panel filters-panel">
-          <h2>Selectors + Filters</h2>
-          <p className="panel-note">
-            Filters are global state. The board uses memoized selectors to avoid unnecessary recalculations.
-          </p>
+          <h2>{t.filtersTitle}</h2>
+          <p className="panel-note">{t.filtersNote}</p>
           <div className="filters-grid">
             <label>
-              Search
+              {t.labelSearch}
               <input
                 name="search"
                 value={filters.search}
                 onChange={handleFilterChange}
-                placeholder="Search text, tag, assignee..."
+                placeholder={t.placeholderSearch}
               />
             </label>
 
             <label>
-              Status
+              {t.labelStatus}
               <select name="status" value={filters.status} onChange={handleFilterChange}>
-                <option value="all">All</option>
-                <option value="todo">To do</option>
-                <option value="doing">In progress</option>
-                <option value="done">Done</option>
+                <option value="all">{t.all}</option>
+                <option value="todo">{t.statuses.todo}</option>
+                <option value="doing">{t.statuses.doing}</option>
+                <option value="done">{t.statuses.done}</option>
               </select>
             </label>
 
             <label>
-              Priority
+              {t.labelPriority}
               <select name="priority" value={filters.priority} onChange={handleFilterChange}>
-                <option value="all">All</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+                <option value="all">{t.all}</option>
+                <option value="high">{t.priorities.high}</option>
+                <option value="medium">{t.priorities.medium}</option>
+                <option value="low">{t.priorities.low}</option>
               </select>
             </label>
 
             <label>
-              Tag
+              {t.labelTag}
               <select name="tag" value={filters.tag} onChange={handleFilterChange}>
-                <option value="all">All</option>
+                <option value="all">{t.all}</option>
                 {tags.map((tag) => (
                   <option key={tag} value={tag}>
                     {tag}
@@ -290,9 +454,9 @@ function App() {
             </label>
 
             <label>
-              Assignee
+              {t.labelAssignee}
               <select name="assignee" value={filters.assignee} onChange={handleFilterChange}>
-                <option value="all">All</option>
+                <option value="all">{t.all}</option>
                 {assignees.map((assignee) => (
                   <option key={assignee} value={assignee}>
                     {assignee}
@@ -302,18 +466,18 @@ function App() {
             </label>
 
             <label>
-              Sort
+              {t.labelSort}
               <select name="sortBy" value={filters.sortBy} onChange={handleFilterChange}>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="priority">Priority</option>
-                <option value="title">Title</option>
+                <option value="newest">{t.sortNewest}</option>
+                <option value="oldest">{t.sortOldest}</option>
+                <option value="priority">{t.sortPriority}</option>
+                <option value="title">{t.sortTitle}</option>
               </select>
             </label>
           </div>
 
           <p className="visible-count">
-            Showing <strong>{visibleTasks.length}</strong> task(s) from global state.
+            {t.visibleCountStart} <strong>{visibleTasks.length}</strong> {t.visibleCountEnd}
           </p>
         </section>
       </main>
@@ -330,12 +494,12 @@ function App() {
               {grouped[column.key].map((task) => (
                 <div key={task.id} className="card">
                   <div className="card-top">
-                    <span className={priorityClass[task.priority]}>{task.priority}</span>
-                    <span className={statusClass[task.status]}>{statusLabel[task.status]}</span>
+                    <span className={priorityClass[task.priority]}>{t.priorities[task.priority]}</span>
+                    <span className={statusClass[task.status]}>{t.statuses[task.status] || statusLabel[task.status]}</span>
                   </div>
 
                   <h4>{task.title}</h4>
-                  <p>{task.description || 'No description.'}</p>
+                  <p>{task.description || t.noDescription}</p>
 
                   <div className="meta-row">
                     <span>@{task.assignee}</span>
@@ -343,32 +507,32 @@ function App() {
                   </div>
 
                   <div className="tag-row">
-                    {task.tags.length ? task.tags.map((tag) => <span key={tag}>#{tag}</span>) : <span>#none</span>}
+                    {task.tags.length ? task.tags.map((tag) => <span key={tag}>#{tag}</span>) : <span>{t.noTags}</span>}
                   </div>
 
                   <div className="card-actions">
                     <button type="button" className="button" onClick={() => dispatch(taskStatusReverted(task.id))}>
-                      Back
+                      {t.back}
                     </button>
                     <button type="button" className="button" onClick={() => dispatch(taskStatusAdvanced(task.id))}>
-                      Next
+                      {t.next}
                     </button>
                     <button type="button" className="button" onClick={() => dispatch(taskToggled(task.id))}>
-                      Toggle done
+                      {t.toggleDone}
                     </button>
                     <button
                       type="button"
                       className="button button-danger"
                       onClick={() => dispatch(taskDeleted(task.id))}
                     >
-                      Delete
+                      {t.delete}
                     </button>
                   </div>
                 </div>
               ))}
 
               {grouped[column.key].length === 0 ? (
-                <p className="column-empty">No tasks in this column for current filters.</p>
+                <p className="column-empty">{t.emptyColumn}</p>
               ) : null}
             </div>
           </article>
