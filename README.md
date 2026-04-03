@@ -1,68 +1,58 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Redux Learning Studio
 
-## Available Scripts
+This project is a full educational example of modern React + Redux Toolkit.
+It is designed to teach Redux from both perspectives:
 
-In the project directory, you can run:
+- Code architecture (store, slice, selectors, async thunks)
+- UI behavior (filters, derived state, task flow, async request states)
 
-### `npm start`
+## What this demo includes
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Global store with `configureStore`
+- Feature slice with reducers and prepared payloads
+- Async flow with `createAsyncThunk` (`pending`, `fulfilled`, `rejected`)
+- Memoized selectors via `createSelector`
+- Derived dashboard stats and filtered/grouped task views
+- Undo pattern for deleted items
+- Responsive UI that visualizes state transitions in real time
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Project structure
 
-### `npm test`
+- `src/app/store.js`: Redux store setup
+- `src/features/board/boardSlice.js`: State, reducers, thunks, selectors
+- `src/App.js`: Connected UI using `useDispatch` and `useSelector`
+- `src/App.css` + `src/index.css`: Visual system and responsive layout
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Quick start
 
-### `npm run build`
+Install dependencies:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Run in development:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
-### `npm run eject`
+Build for production:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run tests:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm test -- --watchAll=false
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Suggested learning path
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1. Create tasks from the UI to see sync reducers.
+2. Use filters and sort options to understand memoized selectors.
+3. Click "Load async templates" to inspect thunk request states.
+4. Delete and undo tasks to learn reversible state transitions.
+5. Move tasks across columns to see derived grouped views.
