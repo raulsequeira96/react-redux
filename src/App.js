@@ -288,7 +288,14 @@ function App() {
             {t.languageButton}
           </button>
         </div>
-        <h1>{t.title}</h1>
+        <h1 className="app-title">
+          <img
+            src={process.env.PUBLIC_URL + '/logo.svg'}
+            alt="react redux task"
+            className="title-icon"
+          />
+          <span>react redux task</span>
+        </h1>
         <p>{t.intro}</p>
 
         <div className="stats-grid">
