@@ -290,7 +290,7 @@ function App() {
         </div>
         <h1 className="app-title">
           <img
-            src={process.env.PUBLIC_URL + '/logo.svg'}
+            src={process.env.PUBLIC_URL + '/task.ico'}
             alt="react redux task"
             className="title-icon"
           />
